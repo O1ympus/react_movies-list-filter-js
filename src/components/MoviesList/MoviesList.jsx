@@ -9,10 +9,14 @@ function filterMovie(query, arr) {
   );
 }
 
-export const MoviesList = ({ query, movies }) => (
-  <div className="movies">
-    {filterMovie(query, movies).map(movie => (
-      <MovieCard key={movie.imdbId} movie={movie} />
-    ))}
-  </div>
-);
+export const MoviesList = ({ query, movies }) => {
+  const visibleMovies = filterMovie(query, movies);
+
+  return (
+    <div className="movies">
+      {visibleMovies.map(movie => (
+        <MovieCard key={movie.imdbId} movie={movie} />
+      ))}
+    </div>
+  );
+};
